@@ -7,6 +7,19 @@
     --border-dark-mode: #15151580;
 }
 
+#description {
+    display: none;
+}
+
+ul {
+    list-style-type: "- "
+}
+
+a {
+    color: whitesmoke;
+    text-decoration: dotted underline grey;
+}
+
 html, body, main {
     background-color: light-dark(var(--bg-dark-mode), var(--bg-light-mode));
     color: light-dark(var(--text-dark-mode), var(--text-light-mode));
