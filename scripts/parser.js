@@ -15,4 +15,5 @@ function parse(data) {
     page.innerHTML += "<br><br>" + sectionHTML;
     page.getElementsByTagName("h1")[0].id = "title";
     page.getElementsByTagName("h1")[0].className = "rubik-800";
+    document.title = "Team 2 - " + urlParams.get("page");
 }
