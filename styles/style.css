@@ -38,6 +38,7 @@
 
 .titlea {
     font-weight: bold;
+    text-decoration: dotted underline grey;
 }
 
 .descspan {
@@ -61,7 +62,7 @@ ul {
 
 a {
     color: var(--text-color);
-    text-decoration: dotted underline grey;
+    text-decoration: none;
 }
 
 html, body, main {
