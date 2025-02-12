@@ -43,8 +43,7 @@ async function fetchPageData() {
 
                 for (let e in pageData["pages"]) {
                     try {
-                        // TODO: Use the GitHub REST API
-                        const mdResponse = await fetch(`../logs/${e}.md`);
+                        const mdResponse = await fetch(`https://api.github.com/repositories/930020370/commits?path=logs/${e}.md&per_page=1`);
                         const lastModified = mdResponse.headers.get('Last-Modified');
 
                         if (lastModified) {
