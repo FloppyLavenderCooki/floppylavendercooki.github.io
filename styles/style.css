@@ -1,4 +1,5 @@
 :root {
+    color-scheme: light dark;
     --bg-light-mode: #f5f5f5;
     --bg-dark-mode: #151515;
     --text-light-mode: #151515;
@@ -9,17 +10,18 @@
     --hover-dark-mode: #1f1f1f;
     --hover-inactive-light-mode: #ebebeb00;
     --hover-inactive-dark-mode: #1f1f1f00;
-    --text-color: light-dark(var(--text-light-mode), var(--text-dark-mode));
-    --bg-color: light-dark(var(--bg-light-mode), var(--bg-dark-mode));
-    color-scheme: light dark;
-    --hover-color: light-dark(var(--hover-light-mode), var(--hover-dark-mode));
-    color-scheme: light dark;
-    --hover-inactive-color: light-dark(var(--hover-inactive-light-mode), var(--hover-inactive-dark-mode));
-    color-scheme: light dark;
+    --scroll-light-mode: #15151530;
+    --scroll-dark-mode: #f5f5f530;
 
+    --bg-color: light-dark(var(--bg-light-mode), var(--bg-dark-mode));
+    --text-color: light-dark(var(--text-light-mode), var(--text-dark-mode));
+    --border-color: light-dark(var(--border-light-mode), var(--border-dark-mode));
+    --hover-color: light-dark(var(--hover-light-mode), var(--hover-dark-mode));
+    --hover-inactive-color: light-dark(var(--hover-inactive-light-mode), var(--hover-inactive-dark-mode));
+    --scroll-color: light-dark(var(--scroll-light-mode), var(--scroll-dark-mode));
 }
 
-.blogpage {
+.blog-page {
     border: 3px solid var(--text-color);
     border-radius: 10px;
     width: calc(50vw / 3);
@@ -31,17 +33,17 @@
     transition: background-color 0.2s, transform 0.2s;
 }
 
-.blogpage:hover {
+.blog-page:hover {
     background-color: var(--hover-color);
     transform: perspective(500px) translateZ(20px);
 }
 
-.titlea {
+.title-a {
     font-weight: bold;
     text-decoration: dotted underline grey;
 }
 
-.descspan {
+.desc-span {
     color: grey;
     font-size: 12pt;
 }
@@ -89,9 +91,17 @@ h1 {
 #page {
     height: 100%;
     padding: 10% 20% 20% 20%;
+    box-sizing: border-box;
     margin: 0;
+    overflow: hidden;
     overflow-y: scroll;
     font-size: 1.5em;
+    scrollbar-color: var(--scroll-color) transparent;
+}
+
+#page img {
+    border-radius: 0.5em;
+    width: 100%;
 }
 
 .inter-400 {
