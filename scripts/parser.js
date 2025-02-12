@@ -16,4 +16,10 @@ function parse(data) {
     page.getElementsByTagName("h1")[0].id = "title";
     page.getElementsByTagName("h1")[0].className = "rubik-800";
     document.title = "Team 2 - " + urlParams.get("page");
+
+    for (const script of page.getElementsByTagName("script")) {
+        let scriptEl = document.createElement('script');
+        scriptEl.setAttribute('src',script.src);
+        document.body.appendChild(scriptEl);
+    }
 }

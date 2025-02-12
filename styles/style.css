@@ -25,12 +25,19 @@
     border: 3px solid var(--text-color);
     border-radius: 10px;
     width: calc(50vw / 3);
+    height: calc(50vh / 6.5);
     padding: 20px;
     margin: 10px;
     cursor: pointer;
     background-color: var(--hover-inactive-color);
     transform: perspective(500px) translateZ(0px);
     transition: background-color 0.2s, transform 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: grey;
+    font-size: 12pt;
+    line-height: 1.75em;
 }
 
 .blog-page:hover {
@@ -41,6 +48,8 @@
 .title-a {
     font-weight: bold;
     text-decoration: dotted underline grey;
+    color: var(--text-color);
+    font-size: 1.5em;
 }
 
 .desc-span {
@@ -116,4 +125,8 @@ h1 {
     font-optical-sizing: auto;
     font-weight: 800;
     font-style: normal;
+}
+
+canvas {
+    width: 100%;
 }
