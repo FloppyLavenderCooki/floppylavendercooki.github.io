@@ -9,7 +9,7 @@ fetch("../logs/points.txt").then((data) => {
         let points = JSON.parse(
             data.replace(/\((\d+),\s*(\d+)\)/g, '[$1, $2]')
         ).map(([x, y]) => ({ x, y }));
-        console.log(points);
+        // console.log(points);
 
         let drawWidth = canvas.width/Math.max(...points.map(point => point.x));
         let drawHeight = canvas.height/Math.max(...points.map(point => point.x));
