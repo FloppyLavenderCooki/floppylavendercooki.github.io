@@ -59,6 +59,7 @@ async function fetchPageData() {
 
                 lastModifiedArr = Object.fromEntries(Object.entries(lastModifiedArr)
                     .sort((a, b) => new Date(b[1]) - new Date(a[1])));
+                console.log(lastModifiedArr);
 
                 for (let e in lastModifiedArr) {
                     makePage(e, pageData);
