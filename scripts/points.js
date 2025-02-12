@@ -16,7 +16,7 @@ fetch("../logs/points.txt").then((data) => {
 
         // ctx.fillStyle = "#ffa500";
         ctx.strokeStyle = "#ff00ff";
-        ctx.lineWidth = 15;
+        ctx.lineWidth = drawWidth/8;
 
         ctx.beginPath();
         ctx.moveTo(points[0].x * drawWidth, canvas.height - points[0].y * drawHeight);
