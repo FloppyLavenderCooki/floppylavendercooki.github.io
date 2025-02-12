@@ -43,6 +43,7 @@ async function fetchPageData() {
 
                 for (let e in pageData["pages"]) {
                     try {
+                        // TODO: Use the GitHub REST API
                         const mdResponse = await fetch(`../logs/${e}.md`);
                         const lastModified = mdResponse.headers.get('Last-Modified');
 
@@ -59,7 +60,7 @@ async function fetchPageData() {
 
                 lastModifiedArr = Object.fromEntries(Object.entries(lastModifiedArr)
                     .sort((a, b) => new Date(b[1]) - new Date(a[1])));
-                console.log(lastModifiedArr);
+                // console.log(lastModifiedArr);
 
                 for (let e in lastModifiedArr) {
                     makePage(e, pageData);
