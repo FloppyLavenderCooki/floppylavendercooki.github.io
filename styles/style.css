@@ -130,3 +130,13 @@ h1 {
 canvas {
     width: 100%;
 }
+
+label {
+    font-size: 0.75em;
+}
+
+select {
+    background-color: var(--bg-color);
+    border: 3px solid var(--text-color);
+    border-radius: 10px;
+}
