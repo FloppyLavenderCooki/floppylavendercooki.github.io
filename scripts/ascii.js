@@ -21,14 +21,40 @@ const mini_ramp = " .:-=+*#%@";
 let full_text = "";
 
 let file = null;
+let zip = null;
+
 document.getElementById("img").onchange = (e) => {
-    const image = new Image(width, height);
-    image.onload = drawImageActualSize;
-    file = e.target.files[0];
-    image.src = URL.createObjectURL(file);
+    if (e.target.files[0].type === "application/x-zip-compressed") {
+        const ext_zip = new JSZip();
+        ext_zip.loadAsync( e.target.files[0])
+            .then(async function (ext_zip) {
+                zip = ext_zip;
+
+                let keys = Object.keys(zip.files)
+                for (const file_key of keys) {
+                    const image = new Image(width, height);
+
+                    image.onload = drawImageActualSize;
+
+                    file = zip.files[file_key];
+
+                    const blob = await file.async("blob");
+                    image.src = URL.createObjectURL(blob);
+                }
+            }, function() { alert("Not a valid zip file") });
+    } else {
+        zip = null;
+
+        const image = new Image(width, height);
+        image.onload = drawImageActualSize;
+        file = e.target.files[0];
+        image.src = URL.createObjectURL(file);
+    }
 }
 
 let reload = () => {
+    localStorage.setItem("colour", document.getElementById("colour").checked);
+
     resolution = res.value;
     width = aspectX.value * resolution;
     height = aspectY.value * resolution;
@@ -46,7 +72,14 @@ let reload = () => {
 document.getElementById("res").onchange = reload;
 document.getElementById("aspect-x").onchange = reload;
 document.getElementById("aspect-y").onchange = reload;
+
+if (localStorage.getItem("colour")) {
+    document.getElementById("colour").checked = true;
+}
 document.getElementById("colour").onchange = reload;
+
+const brightness = document.getElementById("brightness");
+brightness.onchange = reload;
 
 let newLine = false;
 function drawImageActualSize() {
@@ -57,8 +90,11 @@ function drawImageActualSize() {
     const data = frame.data;
     // console.log(data);
 
-    document.getElementById("ascii").innerHTML = "";
-    full_text = "";
+    if (zip === null) {
+        document.getElementById("ascii").innerHTML = "";
+        full_text = "";
+    }
+
     for (let i = 0; i < data.length; i += 4) {
         const r = data[i];
         const g = data[i + 1];
@@ -73,17 +109,25 @@ function drawImageActualSize() {
         if (((i / 4) + 1) % width === 0) {
             newLine = true;
         }
+
         // FULL
-        // let full_ramp_text = full_ramp[full_ramp.length-1 - (Math.floor(bw / 225 * (full_ramp.length - 2)))];
-        // full_text += full_ramp_text;
+        // let full_ramp_text = full_ramp[Math.round((bw / 255) * (full_ramp.length - 1))];
+        // if (document.getElementById("colour").checked) {
+        //     full_text += `<span style="color: rgb(${r}, ${g}, ${b})">${full_ramp_text}</span>`;
+        // } else {
+        //     full_text += full_ramp_text;
+        // }
 
         // MINI
-        let mini_ramp_text = mini_ramp[Math.floor(bw / 225 * (mini_ramp.length - 2))];
+        let mini_ramp_text = mini_ramp[Math.floor(bw / 255 * (mini_ramp.length - 2))];
         if (document.getElementById("colour").checked) {
-            full_text += `<span style="color: rgb(${r}, ${g}, ${b})">${mini_ramp_text}</span>`;
+            full_text += `<span style="color: rgb(${r + brightness.value*(bw / 255)}, ${g + brightness.value*(bw / 255)}, ${b + brightness.value*(bw / 255)})">${mini_ramp_text}</span>`;
         } else {
             full_text += mini_ramp_text;
         }
-        document.getElementById("ascii").innerHTML = full_text;
     }
+    document.getElementById("ascii").innerHTML = full_text;
+
+    console.log("BR");
+    document.getElementById("ascii").innerHTML += "\n";
 }

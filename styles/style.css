@@ -180,3 +180,7 @@ select, input {
     margin: 0;
     white-space: pre;
 }
+
+label:has(input:disabled) {
+    color: grey;
+}
