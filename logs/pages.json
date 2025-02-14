@@ -4,6 +4,7 @@
         "index": "this is a test page",
         "yomama": "a very funny joke",
         "jack": "description here",
-        "points": "plotting points on canvas (debug)"
+        "points": "plotting points on canvas (debug)",
+        "book": "book name and author generator"
     }
 }
