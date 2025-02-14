@@ -43,6 +43,10 @@
     }
 }
 
+br {
+    user-select: none;
+}
+
 .blog-page {
     border: 3px solid var(--text-color);
     border-radius: 10px;
