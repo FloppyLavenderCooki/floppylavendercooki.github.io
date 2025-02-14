@@ -11,6 +11,11 @@ if (localStorage.getItem("sort")) {
     sort.value = localStorage.getItem("sort");
 }
 
+let lastModifiedArr = {};
+if (sessionStorage.getItem("lastModifiedArr")) {
+    lastModifiedArr = JSON.parse(sessionStorage.getItem("lastModifiedArr"));
+}
+
 function makePage(e, pageData) {
     let a = document.createElement("a");
     a.href = `view/index.html?page=${e}`;
@@ -39,27 +44,29 @@ async function fetchPageData() {
 
         switch (sort.value) {
             case "latest":
-                let lastModifiedArr = {};
+                if (Object.entries(lastModifiedArr).length === 0) {
+                    for (let e in pageData["pages"]) {
+                        try {
+                            const mdResponse = await fetch(`https://api.github.com/repositories/930020370/commits?path=logs/${e}.md&per_page=1`);
+                            const lastModified = mdResponse.headers.get('Last-Modified');
 
-                for (let e in pageData["pages"]) {
-                    try {
-                        const mdResponse = await fetch(`https://api.github.com/repositories/930020370/commits?path=logs/${e}.md&per_page=1`);
-                        const lastModified = mdResponse.headers.get('Last-Modified');
-
-                        if (lastModified) {
-                            // console.log('Last Modified:', lastModified);
-                            lastModifiedArr[e] = lastModified;
-                        } else {
-                            console.log('No Last-Modified header found');
+                            if (lastModified) {
+                                // console.log('Last Modified:', lastModified);
+                                lastModifiedArr[e] = lastModified;
+                            } else {
+                                console.log('No Last-Modified header found');
+                            }
+                        } catch (err) {
+                            console.log(`Error fetching last modified for ${e}:`, err);
                         }
-                    } catch (err) {
-                        console.log(`Error fetching last modified for ${e}:`, err);
                     }
                 }
 
                 lastModifiedArr = Object.fromEntries(Object.entries(lastModifiedArr)
                     .sort((a, b) => new Date(b[1]) - new Date(a[1])));
                 // console.log(lastModifiedArr);
+
+                sessionStorage.setItem("lastModifiedArr", JSON.stringify(lastModifiedArr));
 
                 for (let e in lastModifiedArr) {
                     makePage(e, pageData);
