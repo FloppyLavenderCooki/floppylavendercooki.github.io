@@ -99,7 +99,7 @@ h1 {
 
 #page {
     height: 100%;
-    padding: 10% 20% 20% 20%;
+    padding: 10% 20% 10% 20%;
     box-sizing: border-box;
     margin: 0;
     overflow: hidden;
@@ -127,6 +127,13 @@ h1 {
     font-style: normal;
 }
 
+.jb-mono-800 {
+     font-family: "JetBrains Mono", serif;
+     font-optical-sizing: auto;
+     font-weight: 800;
+     font-style: normal;
+ }
+
 canvas {
     width: 100%;
 }
@@ -135,8 +142,15 @@ label {
     font-size: 0.75em;
 }
 
-select {
+select, input {
     background-color: var(--bg-color);
     border: 3px solid var(--text-color);
     border-radius: 10px;
+}
+
+#ascii {
+    font-size: 12px;
+    line-height: 9px;
+    margin: 0;
+    white-space: pre;
 }
