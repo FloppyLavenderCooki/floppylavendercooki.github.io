@@ -21,6 +21,28 @@
     --scroll-color: light-dark(var(--scroll-light-mode), var(--scroll-dark-mode));
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: var(--bg-dark-mode);
+        --text-color: var(--text-dark-mode);
+        --border-color: var(--border-dark-mode);
+        --hover-color: var(--hover-dark-mode);
+        --hover-inactive-color: var(--hover-inactive-dark-mode);
+        --scroll-color: var(--scroll-dark-mode);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-color: var(--bg-light-mode);
+        --text-color: var(--text-light-mode);
+        --border-color: var(--border-light-mode);
+        --hover-color: var(--hover-light-mode);
+        --hover-inactive-color: var(--hover-inactive-light-mode);
+        --scroll-color: var(--scroll-light-mode);
+    }
+}
+
 .blog-page {
     border: 3px solid var(--text-color);
     border-radius: 10px;

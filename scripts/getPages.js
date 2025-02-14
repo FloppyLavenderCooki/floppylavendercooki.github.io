@@ -42,6 +42,15 @@ async function fetchPageData() {
         const response = await fetch(`../logs/pages.json`);
         const pageData = await response.json();
 
+        if (JSON.parse(localStorage.getItem("lastModifiedArr"))) {
+            let lastModifiedArrTemp = Object.fromEntries(Object.entries(JSON.parse(localStorage.getItem("lastModifiedArr")))
+                .sort((a, b) => new Date(b[1]) - new Date(a[1])));
+
+            for (let e in lastModifiedArrTemp) {
+                makePage(e, pageData);
+            }
+        }
+
         switch (sort.value) {
             case "latest":
                 if (Object.entries(lastModifiedArr).length === 0) {
@@ -67,12 +76,15 @@ async function fetchPageData() {
                 // console.log(lastModifiedArr);
 
                 sessionStorage.setItem("lastModifiedArr", JSON.stringify(lastModifiedArr));
+                localStorage.setItem("lastModifiedArr", JSON.stringify(lastModifiedArr));
 
+                pages.innerHTML = "";
                 for (let e in lastModifiedArr) {
                     makePage(e, pageData);
                 }
                 break;
             default:
+                pages.innerHTML = "";
                 for (let e in pageData["pages"]) {
                     makePage(e, pageData);
                 }
