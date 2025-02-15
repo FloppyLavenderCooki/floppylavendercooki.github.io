@@ -16,9 +16,10 @@ canvas.height = height;
 canvas.style.width = width+"px";
 canvas.style.height = height+"px";
 
-const full_ramp = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
+// const full_ramp = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
 const mini_ramp = " .:-=+*#%@";
 let full_text = "";
+let col_text = "";
 
 let file = null;
 let zip = null;
@@ -73,7 +74,7 @@ document.getElementById("res").onchange = reload;
 document.getElementById("aspect-x").onchange = reload;
 document.getElementById("aspect-y").onchange = reload;
 
-if (localStorage.getItem("colour")) {
+if (localStorage.getItem("colour") && JSON.parse(localStorage.getItem("colour"))) {
     document.getElementById("colour").checked = true;
 }
 document.getElementById("colour").onchange = reload;
@@ -93,6 +94,7 @@ function drawImageActualSize() {
     if (zip === null) {
         document.getElementById("ascii").innerHTML = "";
         full_text = "";
+        col_text = "";
     }
 
     for (let i = 0; i < data.length; i += 4) {
@@ -103,6 +105,7 @@ function drawImageActualSize() {
 
         if (newLine) {
             full_text += "\n";
+            col_text += "\n";
             newLine = false;
         }
 
@@ -121,13 +124,22 @@ function drawImageActualSize() {
         // MINI
         let mini_ramp_text = mini_ramp[Math.floor(bw / 255 * (mini_ramp.length - 2))];
         if (document.getElementById("colour").checked) {
-            full_text += `<span style="color: rgb(${r + brightness.value*(bw / 255)}, ${g + brightness.value*(bw / 255)}, ${b + brightness.value*(bw / 255)})">${mini_ramp_text}</span>`;
-        } else {
-            full_text += mini_ramp_text;
+            col_text += `<span style="color: rgb(${r + brightness.value*(bw / 255)}, ${g + brightness.value*(bw / 255)}, ${b + brightness.value*(bw / 255)})">${mini_ramp_text}</span>`;
         }
+        full_text += mini_ramp_text;
     }
-    document.getElementById("ascii").innerHTML = full_text;
 
-    console.log("BR");
-    document.getElementById("ascii").innerHTML += "\n";
+    if (document.getElementById("colour").checked) {
+        document.getElementById("ascii").innerHTML += col_text;
+    } else {
+        document.getElementById("ascii").innerHTML += full_text;
+    }
+
+    const a = document.createElement('a');
+    a.innerText = "DOWNLOAD⤴"
+    a.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(full_text));
+    a.setAttribute('download', file.name.replace(`.${file.type.split("/")[1]}`, ""));
+    document.getElementById("ascii").innerHTML += "<br>";
+    document.getElementById("ascii").appendChild(a);
+    document.getElementById("ascii").innerHTML += "<br>";
 }
