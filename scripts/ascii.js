@@ -16,7 +16,8 @@ canvas.height = height;
 canvas.style.width = width+"px";
 canvas.style.height = height+"px";
 
-// const full_ramp = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
+let full_ramp = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
+full_ramp = full_ramp.split("").reverse().join("");
 const mini_ramp = " .:-=+*#%@";
 let full_text = "";
 let col_text = "";
@@ -73,6 +74,7 @@ let reload = () => {
 document.getElementById("res").onchange = reload;
 document.getElementById("aspect-x").onchange = reload;
 document.getElementById("aspect-y").onchange = reload;
+document.getElementById("full").onchange = reload;
 
 if (localStorage.getItem("colour") && JSON.parse(localStorage.getItem("colour"))) {
     document.getElementById("colour").checked = true;
@@ -113,26 +115,27 @@ function drawImageActualSize() {
             newLine = true;
         }
 
-        // FULL
-        // let full_ramp_text = full_ramp[Math.round((bw / 255) * (full_ramp.length - 1))];
-        // if (document.getElementById("colour").checked) {
-        //     full_text += `<span style="color: rgb(${r}, ${g}, ${b})">${full_ramp_text}</span>`;
-        // } else {
-        //     full_text += full_ramp_text;
-        // }
-
-        // MINI
-        let mini_ramp_text = mini_ramp[Math.floor(bw / 255 * (mini_ramp.length - 2))];
-        if (document.getElementById("colour").checked) {
-            col_text += `<span style="color: rgb(${r + brightness.value*(bw / 255)}, ${g + brightness.value*(bw / 255)}, ${b + brightness.value*(bw / 255)})">${mini_ramp_text}</span>`;
+        if (document.getElementById("full").checked) {
+            // FULL
+            let full_ramp_text = full_ramp[Math.round((bw / 255) * (full_ramp.length - 1))];
+            if (document.getElementById("colour").checked) {
+                col_text += `<span style="color: rgb(${r}, ${g}, ${b})">${full_ramp_text}</span>`;
+            }
+            full_text += full_ramp_text;
+        } else {
+            // MINI
+            let mini_ramp_text = mini_ramp[Math.floor(bw / 255 * (mini_ramp.length - 2))];
+            if (document.getElementById("colour").checked) {
+                col_text += `<span style="color: rgb(${r + brightness.value*(bw / 255)}, ${g + brightness.value*(bw / 255)}, ${b + brightness.value*(bw / 255)})">${mini_ramp_text}</span>`;
+            }
+            full_text += mini_ramp_text;
         }
-        full_text += mini_ramp_text;
     }
 
     if (document.getElementById("colour").checked) {
         document.getElementById("ascii").innerHTML += col_text;
     } else {
-        document.getElementById("ascii").innerHTML += full_text;
+        document.getElementById("ascii").textContent += full_text;
     }
 
     const a = document.createElement('a');

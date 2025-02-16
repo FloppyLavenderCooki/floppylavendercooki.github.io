@@ -4,10 +4,11 @@
 <input type="number" id="res" name="res" min="1" max="16" value="4"></input> 
 <label>Aspect Ratio: </label>
 <input type="number" id="aspect-x" name="aspect-x" min="1" max="16" value="16"></input>
-<input type="number" id="aspect-y" name="aspect-y" min="1" max="9" value="9"></input>
+<input type="number" id="aspect-y" name="aspect-y" min="1" max="12" value="12"></input>
 
 <label for="colour">Colour: <input type="checkbox" id="colour" name="colour"></input></label>
 <label for="brightness">Brightness Added: <input type="number" id="brightness" name="brightness" min="-255" max="255" value="0"></input></label>
+<label for="full">Full Ascii: <input type="checkbox" id="full" name="full"></input></label>
 <p id="ascii" class="jb-mono-800"></p>
 <br>
 <br>
