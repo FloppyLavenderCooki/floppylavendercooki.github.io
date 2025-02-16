@@ -174,13 +174,6 @@ select, input {
     border-radius: 10px;
 }
 
-#ascii {
-    font-size: 12px;
-    line-height: 9px;
-    margin: 0;
-    white-space: pre;
-}
-
 label:has(input:disabled) {
     color: grey;
 }

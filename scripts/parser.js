@@ -20,10 +20,6 @@ function parse(data) {
     for (const script of page.getElementsByTagName("script")) {
         let scriptEl = document.createElement('script');
         scriptEl.setAttribute('src', script.src);
-        if (script.src.includes("jszip")) {
-            document.head.appendChild(scriptEl);
-        } else {
-            document.body.appendChild(scriptEl);
-        }
+        document.body.appendChild(scriptEl);
     }
 }
