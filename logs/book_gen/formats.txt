@@ -1,0 +1,4 @@
+The {{adjective}} {{noun}}
+My {{adjective}} {{noun}}
+{{number}} {{plural_noun}} {{verb}}
+This is the {{adjective}} story of a {{noun}} named Stanley.

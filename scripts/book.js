@@ -1,20 +1,35 @@
-fetch("../logs/book_gen/book1.txt").then((response) => response.text()).then((data) => {
-    document.getElementById("name").textContent += data.split("\r\n")[Math.floor(data.split("\r\n").length * Math.random())] + " ";
-    fetch("../logs/book_gen/book2.txt").then((response) => response.text()).then((data) => {
-        document.getElementById("name").textContent += data.split("\r\n")[Math.floor(data.split("\r\n").length * Math.random())] + " ";
-        fetch("../logs/book_gen/book3.txt").then((response) => response.text()).then((data) => {
-            document.getElementById("name").textContent += data.split("\r\n")[Math.floor(data.split("\r\n").length * Math.random())];
-        })
-    })
-})
+function random(thing) {
+    if (thing === "number") {
+        return Math.floor(Math.random()*10).toString()
+            .replaceAll("1", "One")
+            .replaceAll("2", "Two")
+            .replaceAll("3", "Three")
+            .replaceAll("4", "Four")
+            .replaceAll("5", "Five")
+            .replaceAll("6", "Six")
+            .replaceAll("7", "Seven")
+            .replaceAll("8", "Eight")
+            .replaceAll("9", "Nine")
+            .replaceAll("10", "Ten");
+    } else {
+        return thing.split("\r\n")[Math.floor(thing.split("\r\n").length * Math.random())];
+    }
+}
 
-document.getElementById("author").textContent = "by "
-fetch("../logs/book_gen/name1.txt").then((response) => response.text()).then((data) => {
-    document.getElementById("author").textContent += data.split("\r\n")[Math.floor(data.split("\r\n").length * Math.random())] + ". ";
-    fetch("../logs/book_gen/name2.txt").then((response) => response.text()).then((data) => {
-        document.getElementById("author").textContent += data.split("\r\n")[Math.floor(data.split("\r\n").length * Math.random())];
-        fetch("../logs/book_gen/name3.txt").then((response) => response.text()).then((data) => {
-            document.getElementById("author").textContent += data.split("\r\n")[Math.floor(data.split("\r\n").length * Math.random())];
+fetch("../logs/book_gen/formats.txt").then((response) => response.text()).then((format) => {
+    fetch("../logs/book_gen/noun.txt").then((response) => response.text()).then((noun) => {
+        fetch("../logs/book_gen/plural_noun.txt").then((response) => response.text()).then((plural_noun) => {
+            fetch("../logs/book_gen/adjective.txt").then((response) => response.text()).then((adjective) => {
+                fetch("../logs/book_gen/verb.txt").then((response) => response.text()).then((verb) => {
+                    document.getElementById("name").textContent += random(format)
+                        .replaceAll("{{noun}}", random(noun))
+                        .replaceAll("{{adjective}}", random(adjective))
+                        .replaceAll("{{number}}", random("number"))
+                        .replaceAll("{{plural_noun}}", random(plural_noun))
+                        .replaceAll("{{verb}}", random(verb));
+                    document.getElementById("author").textContent += "By " + random(noun);
+                })
+            })
         })
     })
 })

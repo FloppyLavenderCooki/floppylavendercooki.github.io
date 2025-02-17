@@ -177,3 +177,17 @@ select, input {
 label:has(input:disabled) {
     color: grey;
 }
+
+#loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    pointer-events: none;
+    z-index: 1;
+}

@@ -8,7 +8,6 @@
 	<style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 	</style>
-	<link href="scripts/loading.js" rel="preload" as="script">
 </head>
 <body>
 	<main id="page">
@@ -19,10 +18,11 @@
 			<option value="latest">last updated</option>
 		</select>
 		<div id="pages" class="inter-400">
-
+			<div id="loading">
+				<h1>Loading...</h1>
+			</div>
 		</div>
 	</main>
-	<script src="scripts/loading.js"></script>
 	<script src="scripts/getPages.js"></script>
 </body>
 </html>

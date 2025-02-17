@@ -22,4 +22,6 @@ function parse(data) {
         scriptEl.setAttribute('src', script.src);
         document.body.appendChild(scriptEl);
     }
+
+    document.getElementById("loading").remove();
 }
