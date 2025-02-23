@@ -24,7 +24,7 @@ function drawPoints() {
     ctx.stroke();
 }
 
-fetch("../logs/points.txt").then((data) => {
+fetch("../logs/tools/points.txt").then((data) => {
     data.text().then((data) => {
         points = JSON.parse(
             data.replaceAll("(","[")

@@ -1,0 +1,16 @@
+# Introductions
+## <a href="https://github.com/FloppyLavenderCooki"><img style="width: 1em; position: relative; top: 0.1em; border-radius: 0.1em;" src="https://github.com/FloppyLavenderCooki.png" alt="FloppyLavenderCooki" title="FloppyLavenderCooki"></a> Group 2
+We are Group 2 (yes, that is because we are the second group in the project).<br>
+We like coding and designing stuff.
+
+## <a href="https://github.com/SunnyFloppyDiskStudios"><img style="width: 1em; position: relative; top: 0.1em;" src="https://github.com/SunnyFloppyDiskStudios.png" alt="SunnyFloppyDiskStudios" title="SunnyFloppyDiskStudios"></a> Arav
+(write stuff here)
+
+## <a href="https://github.com/Cooki-Studios"><img style="width: 1em; position: relative; top: 0.1em;" src="https://github.com/Cooki-Studios.png" alt="Cooki-Studios" title="Cooki-Studios"></a> Kieran
+Hi, I'm Kieran.
+
+## <a href="https://github.com/Salping"><img style="width: 1em; position: relative; top: 0.1em;" src="https://github.com/salping.png" alt="salping" title="salping"></a> Jarvis
+(write stuff here too)
+
+## Conclusion
+We are making a game about smart libraries.

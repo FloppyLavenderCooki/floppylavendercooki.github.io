@@ -26,7 +26,7 @@ function makePage(e, pageData) {
 
     let title = document.createElement("span");
     title.className = "title-a";
-    title.innerText = `${e}`;
+    title.innerText = `${e.replaceAll("tools/","")}`;
 
     let descSpan = document.createElement("span");
     descSpan.className = "desc-span";
@@ -34,7 +34,11 @@ function makePage(e, pageData) {
 
     div.append(title, document.createElement("br"), descSpan);
     a.appendChild(div);
-    pages.appendChild(a);
+    if (e.includes("tools/")) {
+        document.getElementById("tools").appendChild(a);
+    } else {
+        pages.appendChild(a);
+    }
 }
 
 async function fetchPageData() {

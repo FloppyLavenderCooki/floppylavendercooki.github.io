@@ -83,7 +83,7 @@ br {
     font-size: 12pt;
 }
 
-#pages {
+.pages {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 50vw;
@@ -134,9 +134,17 @@ h1 {
     scrollbar-color: var(--scroll-color) transparent;
 }
 
-#page img {
+#page img:not([width]) {
     border-radius: 0.5em;
     width: 100%;
+}
+
+#page h2 {
+    margin-bottom: 0.25em;
+}
+
+#page h2 + p {
+    margin-top: 0;
 }
 
 .inter-400 {

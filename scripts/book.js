@@ -16,11 +16,11 @@ function random(thing) {
     }
 }
 
-fetch("../logs/book_gen/formats.txt").then((response) => response.text()).then((format) => {
-    fetch("../logs/book_gen/noun.txt").then((response) => response.text()).then((noun) => {
-        fetch("../logs/book_gen/plural_noun.txt").then((response) => response.text()).then((plural_noun) => {
-            fetch("../logs/book_gen/adjective.txt").then((response) => response.text()).then((adjective) => {
-                fetch("../logs/book_gen/verb.txt").then((response) => response.text()).then((verb) => {
+fetch("../logs/tools/book_gen/formats.txt").then((response) => response.text()).then((format) => {
+    fetch("../logs/tools/book_gen/noun.txt").then((response) => response.text()).then((noun) => {
+        fetch("../logs/tools/book_gen/plural_noun.txt").then((response) => response.text()).then((plural_noun) => {
+            fetch("../logs/tools/book_gen/adjective.txt").then((response) => response.text()).then((adjective) => {
+                fetch("../logs/tools/book_gen/verb.txt").then((response) => response.text()).then((verb) => {
                     document.getElementById("name").textContent += random(format)
                         .replaceAll("{{noun}}", random(noun))
                         .replaceAll("{{adjective}}", random(adjective))
