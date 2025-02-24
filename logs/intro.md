@@ -10,7 +10,7 @@ We like coding and designing stuff.
 Hi, I'm Kieran.
 
 ## <a href="https://github.com/Salping"><img style="width: 1em; position: relative; top: 0.1em;" src="https://github.com/salping.png" alt="salping" title="salping"></a> Jarvis
-(write stuff here too)
+Hiya, I'm Jarvis. I'm 15 (as of 24/2/25) years old, and I really enjoy programming. My favourite languages to use are Rust, Zig, and Nim, but I also dabble in a bit of C++. Reading has been one of my passions since a very young age, and I think that everyone should have equal access to reading material.
 
 ## Conclusion
-We are making a game about smart libraries.
+We are making a game about smart libraries. On the way, we're also developing a new solution for library cards and overdue fee payment.
