@@ -99,6 +99,33 @@ async function fetchPageData() {
                 break;
         }
         document.getElementById("tool-h1").style.visibility = "visible";
+
+        for (const blogPage of document.getElementsByClassName("blog-page")) {
+            blogPage.addEventListener("pointerenter", function (e) {
+                blogPage.setPointerCapture(e.pointerId);
+                blogPage.style.background = `radial-gradient(circle at ${e.offsetX}px ${e.offsetY}px, var(--hover-color) 0%, var(--hover-inactive-color) 50%)`;
+                blogPage.style.transform = `perspective(500px) translateZ(20px) rotate3d(${(e.offsetY/blogPage.clientHeight)-0.5}, ${-(e.offsetX/blogPage.clientWidth)+0.5}, 0, 5deg)`
+            });
+
+            blogPage.addEventListener("pointermove", function (e) {
+                blogPage.style.background = `radial-gradient(circle at ${e.offsetX}px ${e.offsetY}px, var(--hover-color) 0%, var(--hover-inactive-color) 50%)`;
+                blogPage.style.transform = `perspective(500px) translateZ(20px) rotate3d(${(e.offsetY/blogPage.clientHeight)-0.5}, ${-(e.offsetX/blogPage.clientWidth)+0.5}, 0, 5deg)`
+            });
+
+            blogPage.addEventListener("pointerdown", function (e) {
+                blogPage.style.transform = `perspective(500px) translateZ(0px) rotate3d(${(e.offsetY/blogPage.clientHeight)-0.5}, ${-(e.offsetX/blogPage.clientWidth)+0.5}, 0, -2.5deg)`
+            })
+
+            blogPage.addEventListener("pointerup", function (e) {
+                blogPage.style.transform = `perspective(500px) translateZ(20px) rotate3d(${(e.offsetY/blogPage.clientHeight)-0.5}, ${-(e.offsetX/blogPage.clientWidth)+0.5}, 0, 5deg)`
+            })
+
+            blogPage.addEventListener("pointerleave", function (e) {
+                blogPage.releasePointerCapture(e.pointerId);
+                blogPage.style.background = "";
+                blogPage.style.transform = "perspective(500px) translateZ(20px)"
+            });
+        }
     } catch (error) {
         console.log("Error fetching pages data:", error);
     }

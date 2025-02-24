@@ -57,7 +57,7 @@ br {
     cursor: pointer;
     background-color: var(--hover-inactive-color);
     transform: perspective(500px) translateZ(0px);
-    transition: background-color 0.2s, transform 0.2s;
+    transition: background-color 0.2s, transform 0.2s, background 0.2s;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -67,7 +67,7 @@ br {
 }
 
 .blog-page:hover {
-    background-color: var(--hover-color);
+    background: radial-gradient(circle at 50% 50%, var(--hover-color) 0%, var(--hover-inactive-color) 50%);
     transform: perspective(500px) translateZ(20px);
 }
 
