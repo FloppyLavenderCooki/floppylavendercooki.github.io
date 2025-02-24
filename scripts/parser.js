@@ -21,6 +21,7 @@ function parse(data) {
         let scriptEl = document.createElement('script');
         scriptEl.setAttribute('src', script.src);
         document.body.appendChild(scriptEl);
+        script.remove();
     }
 
     document.getElementById("loading").remove();
