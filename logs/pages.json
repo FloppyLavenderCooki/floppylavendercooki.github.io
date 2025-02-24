@@ -1,6 +1,7 @@
 {
     "pages": {
-        "intro": "the first true log",
+        "intro": "welcome to the project!",
+        "goal": "our plan and ideas",
         "tools/points": "plotting points on canvas",
         "tools/book": "book name and author generator"
     }
