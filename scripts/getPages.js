@@ -1,10 +1,12 @@
 // let pageData = {};
 // let description = document.getElementById("description");
 let pages = document.getElementById("pages");
+let tools = document.getElementById("tools");
 const sort = document.getElementById("sort");
 sort.onchange = () => {
     localStorage.setItem("sort", sort.value);
     pages.innerHTML = "";
+    tools.innerHTML = "";
     fetchPageData();
 }
 if (localStorage.getItem("sort")) {
@@ -35,7 +37,7 @@ function makePage(e, pageData) {
     div.append(title, document.createElement("br"), descSpan);
     a.appendChild(div);
     if (e.includes("tools/")) {
-        document.getElementById("tools").appendChild(a);
+        tools.appendChild(a);
     } else {
         pages.appendChild(a);
     }
@@ -83,17 +85,20 @@ async function fetchPageData() {
                 localStorage.setItem("lastModifiedArr", JSON.stringify(lastModifiedArr));
 
                 pages.innerHTML = "";
+                tools.innerHTML = "";
                 for (let e in lastModifiedArr) {
                     makePage(e, pageData);
                 }
                 break;
             default:
                 pages.innerHTML = "";
+                tools.innerHTML = "";
                 for (let e in pageData["pages"]) {
                     makePage(e, pageData);
                 }
                 break;
         }
+        document.getElementById("tool-h1").style.visibility = "visible";
     } catch (error) {
         console.log("Error fetching pages data:", error);
     }
