@@ -1,4 +1,4 @@
-# Introductions
+# 👋 Introductions
 ## <a href="https://github.com/FloppyLavenderCooki"><img style="width: 1em; position: relative; top: 0.1em; border-radius: 0.1em;" src="https://github.com/FloppyLavenderCooki.png" alt="FloppyLavenderCooki" title="FloppyLavenderCooki"></a> Group 2
 We are Group 2 (yes, that is because we are the second group in the project).<br>
 We like coding and designing stuff. On our blog you will find logs and updates on the various aspects of our project.
