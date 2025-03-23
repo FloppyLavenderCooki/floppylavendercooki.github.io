@@ -27,7 +27,7 @@ One of the biggest hurdles have shown itself early in the development cycle, and
 <img src="/img/mar21/irl_card_front.png" alt="member card IRL (front)" style="width: 40%">
 <p id="alt-text">Front of the membership card. Vertical card design with GROUP 2 <b>LIBRARIES</b> on the bottom, and the group 2 "rays" in the center</p>
 
-As a group we designed a member card, which is stylish, easy to use, and contains enough information for the user. It follows a standard card-size, easy to fit in any wallet, and contains a NFC chip. Due to how proprietary the NFC chip was, we decided to link the card's serial number to the user that owns the card. The member card can be used at a library kiosk (assuming we made real ones) and on a mobile device to access membership information.
+As a group we designed a member card, which is stylish, easy to use, and contains enough information for the user. It follows a standard card-size, easy to fit in any wallet, and contains a NFC chip. Due to how proprietary the NFC chip was, we decided to link the card's serial number to the user that owns the card. Using this technology, it is possible to link any NFC-enabled card to our library system (Snapper Card, Debit Card, most School ID cards, etc.), however we do not plan to utilise this in our system. The member card can be used at a library kiosk (assuming we made real ones) and on a mobile device to access membership information.
 
 <img src="/img/mar21/irl_card_rear.png" alt="member card IRL (rear)" style="width: 50%">
 <p id="alt-text">Rear of the membership card. Horizontal card design, containing information such as the serial number, member ID, expiry, and user level. Has indicator for NFC chip, and a magnetic strip</p>
