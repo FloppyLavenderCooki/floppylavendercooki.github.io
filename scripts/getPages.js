@@ -123,7 +123,7 @@ async function fetchPageData() {
             blogPage.addEventListener("pointerleave", function (e) {
                 blogPage.releasePointerCapture(e.pointerId);
                 blogPage.style.background = "";
-                blogPage.style.transform = "perspective(500px) translateZ(20px)"
+                blogPage.style.transform = ""
             });
         }
     } catch (error) {
