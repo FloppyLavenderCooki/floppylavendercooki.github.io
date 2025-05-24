@@ -1,7 +1,5 @@
 {
     "pages": {
-        "final/app": "Our App",
-        "final/game": "Our Game",
         "intro": "welcome to the project!",
         "goal": "our plan and ideas",
         "march 21 update": "first progress update",
@@ -16,6 +14,8 @@
         "may 16 update": "",
         "may 19 update": "",
         "may 23 update": "",
+        "final/app": "Our App",
+        "final/game": "Our Game",
         "tools/points": "plotting points on canvas",
         "tools/book": "book name and author generator"
     }
