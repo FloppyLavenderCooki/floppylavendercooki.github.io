@@ -1,11 +1,13 @@
 // let pageData = {};
 // let description = document.getElementById("description");
 let pages = document.getElementById("pages");
+let final = document.getElementById("final");
 let tools = document.getElementById("tools");
 const sort = document.getElementById("sort");
 sort.onchange = () => {
     localStorage.setItem("sort", sort.value);
     pages.innerHTML = "";
+    final.innerHTML = "";
     tools.innerHTML = "";
     fetchPageData();
 }
@@ -28,7 +30,7 @@ function makePage(e, pageData) {
 
     let title = document.createElement("span");
     title.className = "title-a";
-    title.innerText = `${e.replaceAll("tools/","")}`;
+    title.innerText = `${e.replaceAll("final/","").replaceAll("tools/","")}`;
 
     let descSpan = document.createElement("span");
     descSpan.className = "desc-span";
@@ -38,6 +40,8 @@ function makePage(e, pageData) {
     a.appendChild(div);
     if (e.includes("tools/")) {
         tools.appendChild(a);
+    } else if (e.includes("final/")) {
+        final.appendChild(a);
     } else {
         pages.appendChild(a);
     }
@@ -85,6 +89,7 @@ async function fetchPageData() {
                 localStorage.setItem("lastModifiedArr", JSON.stringify(lastModifiedArr));
 
                 pages.innerHTML = "";
+                final.innerHTML = "";
                 tools.innerHTML = "";
                 for (let e in lastModifiedArr) {
                     makePage(e, pageData);
@@ -92,12 +97,14 @@ async function fetchPageData() {
                 break;
             default:
                 pages.innerHTML = "";
+                final.innerHTML = "";
                 tools.innerHTML = "";
                 for (let e in pageData["pages"]) {
                     makePage(e, pageData);
                 }
                 break;
         }
+        document.getElementById("final-h1").style.visibility = "visible";
         document.getElementById("tool-h1").style.visibility = "visible";
 
         for (const blogPage of document.getElementsByClassName("blog-page")) {
