@@ -20,7 +20,7 @@ if (sessionStorage.getItem("lastModifiedArr")) {
 
 function makePage(e, pageData) {
     let a = document.createElement("a");
-    a.href = `view/index.html?page=${e}`;
+    a.href = `view/?page=${e}`;
     a.id = `page-${e}`;
 
     let div = document.createElement("div");
