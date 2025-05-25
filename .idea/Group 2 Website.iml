@@ -10,5 +10,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="marked" level="application" />
     <orderEntry type="library" name="jszip" level="application" />
+    <orderEntry type="library" name="prismjs" level="application" />
+    <orderEntry type="library" name="prism-themes" level="application" />
   </component>
 </module>

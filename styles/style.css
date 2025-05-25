@@ -137,10 +137,32 @@ h1 {
 #page img:not([width]) {
     border-radius: 0.5em;
     width: 100%;
+}
 
+#page img.alt-image {
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+
+#page img.alt-image:not(:last-of-type) {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#page img.alt-image:not(:first-of-type) {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.alt-image-layout {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 4px;
+    width: 50%;
+    margin: 0 auto;
 }
 
 #page h2 {
@@ -209,7 +231,7 @@ label:has(input:disabled) {
 #alt-text {
     font-size: 0.65em;
     text-align: center;
-    margin-top: 0;
+    margin-top: 0.25em;
 }
 
 #final-h1 {
@@ -221,4 +243,53 @@ label:has(input:disabled) {
     margin-top: 1em;
     margin-bottom: 0.5em;
     visibility: hidden;
+}
+
+pre[class*='language-'] {
+    position: relative;
+    /*width: 80%;*/
+    /*margin: 0 auto;*/
+    padding: 1.5em 0 0;
+    font-size: 0.65em;
+    background: inherit;
+}
+
+pre[class*='language-'] > code[data-language] {
+    overflow: scroll;
+    max-height: 28em;
+    display: block;
+    padding: 1em;
+}
+
+pre[class*='language-'] > code[data-filename]::before {
+    content: attr(data-filename);
+    color: inherit;
+    background-color: inherit;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 0.9em;
+    border-top-right-radius: 5px;
+    padding: 0 0.5em;
+    text-shadow: none;
+}
+
+pre[class*='language-'] > code[data-language]::after {
+    content: attr(data-language);
+    color: inherit;
+    background-color: inherit;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 0.9em;
+    border-top-left-radius: 5px;
+    padding: 0 0.5em;
+    text-shadow: none;
+}
+
+del {
+    opacity: 0.8;
+    user-select: none;
 }

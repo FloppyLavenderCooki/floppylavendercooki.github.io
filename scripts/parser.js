@@ -55,4 +55,30 @@ function parse(data) {
     } else {
         document.getElementById("loading").remove();
     }
+
+    if (typeof Prism !== 'undefined') {
+        Prism.hooks.add('before-highlight', function (env) {
+            env.element.setAttribute('data-language', env.language);
+        });
+        // Prism.highlightAll();
+
+        const codeBlocks = document.querySelectorAll('pre code');
+        codeBlocks.forEach((block) => {
+            const block2 = block.cloneNode(true);
+            fetch(`/img/scripts/${block2.getAttribute('data-filename')}`).then((response) => {
+                response.text().then((data) => {
+                    block2.innerHTML = data;
+                    const pre = document.createElement('pre');
+                    pre.style.display = 'none';
+                    pre.appendChild(block2);
+
+                    block.parentElement.parentElement.insertBefore(pre, block.parentElement);
+                    block.parentElement.remove();
+                    pre.style.display = 'block';
+
+                    Prism.highlightElement(block2);
+                });
+            });
+        });
+    }
 }

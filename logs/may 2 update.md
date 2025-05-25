@@ -1,14 +1,27 @@
 # 🗓️ May 2
-The term break has ended and we've made significant progress on our project!
+The term break has ended, and we've made significant progress on our project!
 
 ## Game
-We decided that Godot would not suit our needs for developing our game, and we switched to a more mainstream game engine called **Unity**. Utilising this platform we should be able to better develop our game, and finally get to working on our game project.
+Jarvis added sprinting to the player controller and view bobbing to the camera.
+
+Arav exported his kiosk model from Maya into FBX and Kieran exported his bookshelf model from
+Blender into FBX in order to be able to use each model without their respective platform installed.
+
+Arav also created a script that lets the player pick up books (just cubes for now) and rotate them around.
+He also added a "nonfunctional spherecast" that is supposed to get detect when the player is touching the
+ground to allow jumping again. Arav also added a cursor so you can tell exactly where you're looking at.
 
 ## App
-Our app is almost complete by this stage. Users can now view their levelling information based on their card, view their issued books, returns, and we've seem to come closer to our final UI choices.
+Our app is almost complete by this stage. Users can now view their levelling information
+based on their card, view their issued books, returns, and we've seemed to come closer to our final UI choices.
 
-<img src="/img/may2/home.png" alt="home screen welcome" style="width: 50%">
-<p id="alt-text">The homepage greeting the user</p>
-
-<img src="/img/may2/catalog.png" alt="library catalog screen" style="width: 50%">
-<p id="alt-text">The catalog showing some books</p>
+<div class="alt-image-layout">
+<div>
+    <img class="alt-image" src="/img/may2/home.png" alt="home screen welcome">
+    <p id="alt-text">The homepage greeting the user</p>
+</div>
+<div>
+    <img class="alt-image" src="/img/may2/catalog.png" alt="library catalog screen">
+    <p id="alt-text">The catalog showing some books</p>
+</div>
+</div>
