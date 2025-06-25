@@ -143,6 +143,10 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     display: block;
+    transition: all 200ms ease-in;
+    border: 3px solid var(--scroll-color);
+    cursor: pointer;
+    transform: perspective(500px) translateZ(0px);
 }
 
 #page img.alt-image:not(:last-of-type) {
@@ -155,13 +159,18 @@ h1 {
     border-top-left-radius: 0;
 }
 
+#page img.alt-image:hover {
+    background: radial-gradient(circle at 50% 50%, var(--hover-color) 0%, var(--hover-inactive-color) 50%);
+    transform: perspective(500px) translateZ(4px);
+}
+
 .alt-image-layout {
     display: flex;
     justify-content: center;
     align-items: stretch;
     flex-direction: column;
     gap: 4px;
-    width: 50%;
+    width: 80%;
     margin: 0 auto;
 }
 

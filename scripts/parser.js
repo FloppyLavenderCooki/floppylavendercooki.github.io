@@ -56,6 +56,41 @@ function parse(data) {
         document.getElementById("loading").remove();
     }
 
+    for (const altImage of document.querySelectorAll("#page img.alt-image")) {
+        altImage.draggable = false;
+
+        altImage.onpointerenter = (e) => {
+            console.log(e);
+        }
+
+        altImage.addEventListener("pointerenter", (e) => {
+            altImage.setPointerCapture(e.pointerId);
+            altImage.style.background = `radial-gradient(circle at ${e.offsetX}px ${e.offsetY}px, var(--hover-color) 0%, var(--hover-inactive-color) 50%)`;
+            altImage.style.transform = `perspective(500px) translateZ(20px) rotate3d(${(e.offsetY/altImage.clientHeight)-0.5}, ${-(e.offsetX/altImage.clientWidth)+0.5}, 0, 5deg)`
+        });
+
+        altImage.addEventListener("pointermove", (e) => {
+            console.log("moving");
+            altImage.style.background = `radial-gradient(circle at ${e.offsetX}px ${e.offsetY}px, var(--hover-color) 0%, var(--hover-inactive-color) 50%)`;
+            altImage.style.transform = `perspective(500px) translateZ(20px) rotate3d(${(e.offsetY/altImage.clientHeight)-0.5}, ${-(e.offsetX/altImage.clientWidth)+0.5}, 0, 5deg)`
+        });
+
+        altImage.addEventListener("pointerdown", (e) => {
+            console.log("Pointer down on alt image");
+            altImage.style.transform = `perspective(500px) translateZ(-200px) rotate3d(${(e.offsetY/altImage.clientHeight)-0.5}, ${-(e.offsetX/altImage.clientWidth)+0.5}, 0, -2.5deg)`
+        });
+
+        altImage.addEventListener("pointerup", (e) => {
+            altImage.style.transform = `perspective(500px) translateZ(20px) rotate3d(${(e.offsetY/altImage.clientHeight)-0.5}, ${-(e.offsetX/altImage.clientWidth)+0.5}, 0, 5deg)`
+        });
+
+        altImage.addEventListener("pointerleave", (e) => {
+            altImage.releasePointerCapture(e.pointerId);
+            altImage.style.background = "";
+            altImage.style.transform = ""
+        });
+    }
+
     if (typeof Prism !== 'undefined') {
         Prism.hooks.add('before-highlight', function (env) {
             env.element.setAttribute('data-language', env.language);
