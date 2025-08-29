@@ -2,20 +2,34 @@
     "pages": {
         "intro": "welcome to the project!",
         "goal": "our plan and ideas",
+
         "march 21 update": "first progress update",
         "march 24 update": "game assets and firebase",
         "march 28 update": "survey time!",
+
         "april 4 update": "moving to unity",
         "april 7 update": "character controller in unity",
         "april 11 update": "game still being setup",
+
         "may 2 update": "back from term break",
         "may 5 update": "various game updates",
         "may 9 update": "new grid material",
         "may 16 update": "building up the library (in-game)",
         "may 19 update": "unity ui system",
         "may 23 update": "",
+
+        "june 6 update": "",
+        "june 20 update": "",
+        "july 4 update": "",
+        "july 18 update": "",
+        "august 1 update": "",
+        "august 15 update": "",
+
+        "august 29 update": "presenting our project!",
+
         "final/app": "Our App",
         "final/game": "Our Game",
+
         "tools/points": "plotting points on canvas",
         "tools/book": "book name and author generator"
     }
